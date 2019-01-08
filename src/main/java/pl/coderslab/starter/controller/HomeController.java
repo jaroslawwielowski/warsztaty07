@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @Controller
-@SessionAttributes({"online", "max"})
-@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
+//@SessionAttributes({"online", "max"})
+//@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
 public class HomeController {
 
     private final UserRepository userRepository;
@@ -69,7 +69,7 @@ public class HomeController {
             }
             user = userRepository.getUserByConfirmationOnlineId(c.getValue());
         }catch (Exception e){
-            message = "ups, coś poszło nie tak" + e;
+            message = "ups,coś poszło nie tak" + e;
         }
         if (user!=null) {
             if (user.isOnline()) {

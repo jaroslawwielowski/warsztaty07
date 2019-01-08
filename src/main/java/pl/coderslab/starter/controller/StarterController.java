@@ -23,7 +23,7 @@ import java.util.List;
 //@RequestMapping("/user")
 //@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 @SessionAttributes({"online", "max"})
-@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
+//@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
 public class StarterController extends WebMvcConfigurerAdapter {
 
     private final UserRepository userRepository;

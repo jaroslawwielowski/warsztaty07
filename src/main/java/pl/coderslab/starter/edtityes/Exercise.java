@@ -14,23 +14,25 @@ public class Exercise {
     private String nameExercise;
 
 
-//    private Project project;
+    @ManyToOne
+    @JoinColumn(name = "id_project")
+    private Project project;
 
 
-//    @OneToMany
-//    @JoinColumn(name = "id_step")
-//    private List<Steps> stepsList;
+    @OneToMany
+    @JoinColumn(name = "id_step")
+    private List<Steps> stepsList;
 
     public Exercise() {
     }
 
-//    public List<Steps> getStepsList() {
-//        return stepsList;
-//    }
-//
-//    public void setStepsList(List<Steps> stepsList) {
-//        this.stepsList = stepsList;
-//    }
+    public List<Steps> getStepsList() {
+        return stepsList;
+    }
+
+    public void setStepsList(List<Steps> stepsList) {
+        this.stepsList = stepsList;
+    }
 
     public Long getId() {
         return id;
@@ -48,11 +50,13 @@ public class Exercise {
         this.nameExercise = nameExercise;
     }
 //
-//    public Project getProject() {
-//        return project;
-//    }
-//
-//    public void setProject(Project project) {
-//        this.project = project;
-//    }
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+
 }

@@ -38,10 +38,18 @@ public class User {
     @Column(unique=true)
     private String email;
 
+
+
     @JoinTable(name = "user_project", joinColumns = @JoinColumn(name = "id_user"),
             inverseJoinColumns = @JoinColumn(name = "id_project"))
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Project> projectList = new ArrayList<>();
+
+
+
+    @OneToMany
+    private List<Steps> stepsList;
+
 
 
     @NotEmpty
@@ -97,6 +105,14 @@ public class User {
         this.confirmationOnlineId = confirmationOnlineId;
     }
 
+
+    public List<Steps> getStepsList() {
+        return stepsList;
+    }
+
+    public void setStepsList(List<Steps> stepsList) {
+        this.stepsList = stepsList;
+    }
 
     public boolean isOnline() {
         return online;

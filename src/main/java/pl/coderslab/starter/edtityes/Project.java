@@ -15,10 +15,10 @@ public class Project {
     private String nameProject;
 
 
-//    private List<Exercise> exerciseList;
+    @OneToMany
+    private List<Exercise> exerciseList;
 
-//    private List<Steps> stepsList;
-
+    private int status;
 
     @ManyToMany
     private List<User> userList;
@@ -50,19 +50,23 @@ public class Project {
         this.userList = userList;
     }
 
-    //    public List<Exercise> getExerciseList() {
-//        return exerciseList;
-//    }
-//
-//    public void setExerciseList(List<Exercise> exerciseList) {
-//        this.exerciseList = exerciseList;
-//    }
-//
-//    public List<Steps> getStepsList() {
-//        return stepsList;
-//    }
-//
-//    public void setStepsList(List<Steps> stepsList) {
-//        this.stepsList = stepsList;
-//    }
+
+
+    public List<Exercise> getExerciseList() {
+        return exerciseList;
+    }
+
+    public void setExerciseList(List<Exercise> exerciseList) {
+        this.exerciseList = exerciseList;
+    }
+
+
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 }
