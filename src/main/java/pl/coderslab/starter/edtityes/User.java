@@ -43,7 +43,7 @@ public class User {
     @JoinTable(name = "user_project", joinColumns = @JoinColumn(name = "id_user"),
             inverseJoinColumns = @JoinColumn(name = "id_project"))
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Project> projectList = new ArrayList<>();
+    private List<Project> projects;
 
 
 
@@ -163,12 +163,12 @@ public class User {
         this.login = login;
     }
 
-    public List<Project> getProjectList() {
-        return projectList;
+    public List<Project> getProjects() {
+        return projects;
     }
 
-    public void setProjectList(List<Project> projectList) {
-        this.projectList = projectList;
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 
     public String getEmail() {
@@ -183,6 +183,16 @@ public class User {
         return password;
     }
 
-
-
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "id=" + id +
+//                ", createDateTime=" + createDateTime +
+//                ", login='" + login + '\'' +
+//                ", email='" + email + '\'' +
+//                ", projects=" + projects +
+//                ", stepsList=" + stepsList +
+//
+//                '}';
+//    }
 }

@@ -12,6 +12,9 @@ import pl.coderslab.starter.repository.UserRepository;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 @RequestMapping("/project")
@@ -73,8 +76,18 @@ public class ProjectController {
         }
         if (user!=null) {
             if (user.isOnline()) {
+                List<User> listUser = new ArrayList<>();
+                List<Project> listProject = new ArrayList<>();
+//
+                listUser.add(user);
+                listProject.add(project);
+//
+                user.setProjects(listProject);
+                project.setUsers(listUser);
                 projectRepository.save(project);
-                model.addAttribute("message", "projekt został dodany prawidłowo");
+                userRepository.save(user);
+
+                model.addAttribute("message", "projekt został dodany prawidłowo" + project.toString());
                 return "fragments/addProject";
             }
         }

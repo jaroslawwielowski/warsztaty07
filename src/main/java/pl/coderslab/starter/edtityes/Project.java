@@ -3,6 +3,7 @@ package pl.coderslab.starter.edtityes;
 import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,8 +21,8 @@ public class Project {
 
     private int status;
 
-    @ManyToMany
-    private List<User> userList;
+    @ManyToMany(mappedBy = "projects")
+    private List<User> users;
 
     public Project() {
     }
@@ -42,15 +43,13 @@ public class Project {
         this.nameProject = nameProject;
     }
 
-    public List<User> getUserList() {
-        return userList;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
-
-
 
     public List<Exercise> getExerciseList() {
         return exerciseList;
@@ -69,4 +68,16 @@ public class Project {
     public void setStatus(int status) {
         this.status = status;
     }
+
+
+//    @Override
+//    public String toString() {
+//        return "Project{" +
+//                "id=" + id +
+//                ", nameProject='" + nameProject + '\'' +
+//                ", exerciseList=" + exerciseList +
+//                ", status=" + status +
+//                ", users=" + users +
+//                '}';
+//    }
 }
