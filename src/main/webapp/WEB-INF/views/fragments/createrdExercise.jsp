@@ -1,24 +1,27 @@
 <%--
   Created by IntelliJ IDEA.
   User: jaroslawwielowski
-  Date: 03/01/2019
-  Time: 22:54
+  Date: 10/01/2019
+  Time: 17:04
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %><html>
+<html>
 <head>
-    <title>Create Project</title>
+    <title>creater exercise</title>
 </head>
 <body>
-<%--@elvariable id="project" type="pl.coderslab.starter.edtityes.Project"--%>
+
 <table>
+    <%--@elvariable id="exercise" type="pl.coderslab.starter.edtityes.Exercise"--%>
     <form:form method="post"
-               modelAttribute="project" action="/project/add">
-        <form:input path="nameProject" placeholder="Nazwa Projektu"/><br>
+               modelAttribute="exercise" action="/exercise/add">
+        <form:input path="nameExercise" placeholder="Nazwa Zadania"/><br>
         <input type="submit" value="dodaj projekt"><br>
     </form:form>
 </table>
+
 </body>
 </html>

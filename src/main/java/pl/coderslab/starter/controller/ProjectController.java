@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.WebUtils;
 import pl.coderslab.starter.edtityes.Project;
 import pl.coderslab.starter.edtityes.User;
+import pl.coderslab.starter.enums.UserPrivileges;
 import pl.coderslab.starter.repository.ProjectRepository;
 import pl.coderslab.starter.repository.UserRepository;
 
@@ -92,6 +93,21 @@ public class ProjectController {
             }
         }
         return "index";
+    }
+
+    @GetMapping(value = "/all")
+    public String allUserProject(Model model, HttpServletRequest request) {
+        Cookie c = WebUtils.getCookie(request, "cookieUser");
+        User user = new User();
+        user= userRepository.getUserByConfirmationOnlineId(c.getValue());
+        if (user!=null && user.isOnline()) {
+                    List<User> users = userRepository.findAll();
+                    model.addAttribute("users", users);
+                    return "fragments/allUsers";
+        }
+        String message = "nie posiadasz uprawnień do tych projektów";
+        model.addAttribute("message", message);
+        return "fragments/message";
     }
 
 }
