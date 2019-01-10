@@ -1,20 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: jaroslawwielowski
-  Date: 02/01/2019
-  Time: 21:14
+  Date: 10/01/2019
+  Time: 16:41
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>first user place</title>
+    <title>Title</title>
 </head>
 <body>
 
-<jsp:include page="../fragments/head.jsp"/>
-<h1>This is first user plays if you are online, you see them</h1>
-
-<%----%>
 </body>
 </html>

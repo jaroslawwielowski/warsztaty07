@@ -79,4 +79,33 @@ public class HomeController {
         model.addAttribute("message" , message);
         return "index";
     }
+
+    @GetMapping("/menu")
+    public String menu(HttpServletRequest request, HttpServletResponse response, Model model){
+        User user = new User();
+        String message = null;
+        try {
+            Cookie c = WebUtils.getCookie(request, "cookieUser");
+            if (c.isHttpOnly()){
+                Cookie cookieUser = new Cookie("cookieUser", null);
+                c.setPath("/");
+                response.addCookie(c);
+            }
+            user = userRepository.getUserByConfirmationOnlineId(c.getValue());
+        }catch (Exception e){
+            message = "ups, coś poszło nie tak" + e;
+        }
+
+
+        if (user!=null) {
+            if (user.isOnline()) {
+                message = " jests już zalogowany/a " + user.getLogin();
+                model.addAttribute( "message" , message);
+                model.addAttribute("user", user);
+                return "fragments/head";
+            }
+        }
+        return "index";
+    }
+
 }
