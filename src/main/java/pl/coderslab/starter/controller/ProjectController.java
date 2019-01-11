@@ -77,14 +77,15 @@ public class ProjectController {
         }
         if (user!=null) {
             if (user.isOnline()) {
-                List<User> listUser = new ArrayList<>();
-                List<Project> listProject = new ArrayList<>();
+                List<Project> listProject = projectRepository.findProjectsByUsers(user.getId());
+                List<User> listUser = userRepository.findUsersByProjects(project);
 //
                 listUser.add(user);
                 listProject.add(project);
 //
                 user.setProjects(listProject);
                 project.setUsers(listUser);
+
                 projectRepository.save(project);
                 userRepository.save(user);
 
@@ -101,9 +102,9 @@ public class ProjectController {
         User user = new User();
         user= userRepository.getUserByConfirmationOnlineId(c.getValue());
         if (user!=null && user.isOnline()) {
-                    List<User> users = userRepository.findAll();
-                    model.addAttribute("users", users);
-                    return "fragments/allUsers";
+                    List<Project> projects = projectRepository.findAll();
+                    model.addAttribute("projects", projects);
+                    return "fragments/allProject";
         }
         String message = "nie posiadasz uprawnień do tych projektów";
         model.addAttribute("message", message);

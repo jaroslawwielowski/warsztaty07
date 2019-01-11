@@ -42,7 +42,7 @@ public class User {
 
     @JoinTable(name = "user_project", joinColumns = @JoinColumn(name = "id_user"),
             inverseJoinColumns = @JoinColumn(name = "id_project"))
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany//(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Project> projects;
 
 

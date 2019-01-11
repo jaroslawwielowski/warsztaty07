@@ -1,7 +1,10 @@
 package pl.coderslab.starter.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import pl.coderslab.starter.edtityes.Project;
 import pl.coderslab.starter.edtityes.User;
+
+import java.util.List;
 
 
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -13,5 +16,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     public User getUserByConfirmationOnlineId(String confirmationOnlineId);
 
     public User getUserById(Long id);
+
+    public List<User> findUsersByProjects(Project project);
 
 }
