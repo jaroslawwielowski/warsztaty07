@@ -77,17 +77,20 @@ public class ProjectController {
         }
         if (user!=null) {
             if (user.isOnline()) {
-                List<Project> listProject= new ArrayList<>(); //= projectRepository.findProjectsByUsers(user.getId());
-                List<User> listUser = new ArrayList<>();// = userRepository.findUsersByProjects(project);
-//
+                List<Project> listProject = projectRepository.getProjectsByUsers(user);
+                List<User> listUser = new ArrayList<>();//userRepository.findUsersByProjects(project);
+//                List<Project> listProject= projectRepository.getProjectsByUsers(user);
                 listUser.add(user);
                 listProject.add(project);
+
 //
                 user.setProjects(listProject);
                 project.setUsers(listUser);
 
-                projectRepository.save(project);
-                userRepository.save(user);
+//                projectRepository.save(project);
+//                userRepository.save(user);
+                projectRepository.saveAll(listProject);
+                userRepository.saveAll(listUser);
 
                 model.addAttribute("message", "projekt został dodany prawidłowo" + project.toString());
                 return "fragments/addProject";
@@ -103,6 +106,7 @@ public class ProjectController {
         user= userRepository.getUserByConfirmationOnlineId(c.getValue());
         if (user!=null && user.isOnline()) {
                     List<Project> projects = projectRepository.findAll();
+//                    List<User> users = userRepository.findAll();
                     model.addAttribute("user", user);
                     model.addAttribute("projects", projects);
                     return "fragments/allProject";

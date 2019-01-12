@@ -6,7 +6,7 @@
 <table border="5"a align="center">
 
     <td><b>User Id</b></td>
-    <td><b>Id</b></td>
+    <td><b>Project Id</b></td>
     <td><b>name project</b></td>
 
 
@@ -14,7 +14,7 @@
     </tr>
     <c:forEach items="${projects}" var="project">
         <tr>
-            <td>${user.id}</td>
+            <td>${project.users}</td>
             <td>${project.id}</td>
             <td>${project.nameProject}</td>
 
