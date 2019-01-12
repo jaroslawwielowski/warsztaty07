@@ -77,8 +77,8 @@ public class ProjectController {
         }
         if (user!=null) {
             if (user.isOnline()) {
-                List<Project> listProject = projectRepository.findProjectsByUsers(user.getId());
-                List<User> listUser = userRepository.findUsersByProjects(project);
+                List<Project> listProject= new ArrayList<>(); //= projectRepository.findProjectsByUsers(user.getId());
+                List<User> listUser = new ArrayList<>();// = userRepository.findUsersByProjects(project);
 //
                 listUser.add(user);
                 listProject.add(project);
@@ -103,6 +103,7 @@ public class ProjectController {
         user= userRepository.getUserByConfirmationOnlineId(c.getValue());
         if (user!=null && user.isOnline()) {
                     List<Project> projects = projectRepository.findAll();
+                    model.addAttribute("user", user);
                     model.addAttribute("projects", projects);
                     return "fragments/allProject";
         }
