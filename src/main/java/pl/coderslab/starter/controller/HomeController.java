@@ -34,8 +34,9 @@ public class HomeController {
         String message = null;
         try {
             Cookie c = WebUtils.getCookie(request, "cookieUser");
+//            Cookie c = new Cookie()
             if (c.isHttpOnly()){
-                Cookie cookieUser = new Cookie("cookieUser", null);
+                c = new Cookie("cookieUser", null);
                 c.setPath("/");
                 response.addCookie(c);
             }
@@ -86,10 +87,11 @@ public class HomeController {
         String message = null;
         try {
             Cookie c = WebUtils.getCookie(request, "cookieUser");
-            if (c.isHttpOnly()){
-                Cookie cookieUser = new Cookie("cookieUser", null);
+            if (!c.isHttpOnly()){
+                c = new Cookie("cookieUser", "null");
                 c.setPath("/");
                 response.addCookie(c);
+
             }
             user = userRepository.getUserByConfirmationOnlineId(c.getValue());
         }catch (Exception e){

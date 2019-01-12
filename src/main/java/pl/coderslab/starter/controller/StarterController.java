@@ -39,10 +39,16 @@ public class StarterController extends WebMvcConfigurerAdapter {
     @GetMapping(value = "/register")
     public String showRegistrationForm(HttpServletRequest request, Model model) {
         Cookie c = WebUtils.getCookie(request, "cookieUser");
-        User user= userRepository.getUserByConfirmationOnlineId(c.getValue());
+        User user = new User();
+        String message = null;
+        try {
+        user= userRepository.getUserByConfirmationOnlineId(c.getValue());
+        }catch (Exception e){
+            message = "ups coś poszło nie tak" + e;
+        }
         if (user!=null) {
             if (user.isOnline()) {
-                String message = " jests już zalogowany " + user.getLogin();
+                message = " jests już zalogowany " + user.getLogin();
                 model.addAttribute( "message" , message);
                 model.addAttribute("user", user);
                 return "piece/FirstUserPlace";
@@ -90,10 +96,15 @@ public class StarterController extends WebMvcConfigurerAdapter {
     public String showLogInForm(Model model,HttpServletRequest request) {
         User user = new User();
         Cookie c = WebUtils.getCookie(request, "cookieUser");
+        String message = null;
+        try {
         user= userRepository.getUserByConfirmationOnlineId(c.getValue());
+        }catch (Exception e){
+            message = "ups,coś poszło nie tak" + e;
+        }
         if (user!=null) {
             if (user.isOnline()) {
-                String message = " jests już zalogowany " + user.getLogin();
+                message = " jests już zalogowany " + user.getLogin();
                 model.addAttribute( "message" , message);
                 model.addAttribute("user", user);
                 return "piece/FirstUserPlace";

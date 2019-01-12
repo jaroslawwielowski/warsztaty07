@@ -19,7 +19,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/project")
-@SessionAttributes({"online", "max"})
+//@SessionAttributes({"online", "max"})
 public class ProjectController {
 
     private final ProjectRepository projectRepository;
@@ -68,7 +68,7 @@ public class ProjectController {
         try {
             Cookie c = WebUtils.getCookie(request, "cookieUser");
             if (c.isHttpOnly()){
-                Cookie cookieUser = new Cookie("cookieUser", null);
+                c = new Cookie("cookieUser", null);
                 c.setPath("/");
                 response.addCookie(c);
             }
