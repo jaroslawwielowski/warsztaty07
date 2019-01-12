@@ -14,7 +14,9 @@
     </tr>
     <c:forEach items="${projects}" var="project">
         <tr>
-            <td>${project.users}</td>
+            <td><c:forEach items="${project.users}" var="user">
+                ${user.id} : ${user.login}<br>
+            </c:forEach> </td>
             <td>${project.id}</td>
             <td>${project.nameProject}</td>
 

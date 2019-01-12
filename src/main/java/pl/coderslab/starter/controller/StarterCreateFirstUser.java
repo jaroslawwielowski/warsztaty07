@@ -35,8 +35,17 @@ public class StarterCreateFirstUser {
        user.setPassword("1q2w");
        user.setEmail("jaroslawwielowski@gmail.com");
        user.setConfirmationStatus(true);
-       message = "jesteś pierwszy Administratorze!!";
+       message = "jesteś pierwszy Administratorze!! i drugi użytkownik";
        userRepository.save(user);
+
+       User user1 = new User();
+        user1.setLogin("wiejarek");
+        user1.setAdministrativeRights(UserPrivileges.NormalUser.toString());
+        user1.setPassword("1q2w");
+        user1.setEmail("constream@gmail.com");
+        user1.setConfirmationStatus(true);
+
+        userRepository.save(user1);
        model.addAttribute("message", message);
         return "index";
     }

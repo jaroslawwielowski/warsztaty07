@@ -13,10 +13,6 @@ import java.util.List;
 public interface ProjectRepository extends JpaRepository<Project, Long> {
 
     public List<Project> getProjectsByUsers(User user);
-//    public  List<Project> findByUsers(User user);
-
-    @Query("select p from Project p where p.users =?1")
-    public  List<Project> findProjectsByUsers(Long id);
 
 
 

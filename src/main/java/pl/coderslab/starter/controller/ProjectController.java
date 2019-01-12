@@ -78,25 +78,23 @@ public class ProjectController {
         if (user!=null) {
             if (user.isOnline()) {
                 List<Project> listProject = projectRepository.getProjectsByUsers(user);
-                List<User> listUser = new ArrayList<>();//userRepository.findUsersByProjects(project);
-//                List<Project> listProject= projectRepository.getProjectsByUsers(user);
+                List<User> listUser = new ArrayList<>();
                 listUser.add(user);
                 listProject.add(project);
-
-//
                 user.setProjects(listProject);
                 project.setUsers(listUser);
-
-//                projectRepository.save(project);
-//                userRepository.save(user);
                 projectRepository.saveAll(listProject);
                 userRepository.saveAll(listUser);
-
                 model.addAttribute("message", "projekt został dodany prawidłowo" + project.toString());
                 return "fragments/addProject";
             }
         }
         return "index";
+    }
+
+    @GetMapping("/ad")
+    public String fullAddProject(){
+        return "piece/fullAddProject";
     }
 
     @GetMapping(value = "/all")
