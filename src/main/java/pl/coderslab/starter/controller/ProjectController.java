@@ -85,7 +85,7 @@ public class ProjectController {
                 project.setUsers(listUser);
                 projectRepository.saveAll(listProject);
                 userRepository.saveAll(listUser);
-                model.addAttribute("message", "projekt został dodany prawidłowo" + project.toString());
+                model.addAttribute("message", "projekt został dodany prawidłowo " + user.getLogin());
                 return "fragments/addProject";
             }
         }
@@ -94,6 +94,11 @@ public class ProjectController {
 
     @GetMapping("/ad")
     public String fullAddProject(){
+        return "piece/fullAddProject";
+    }
+
+    @PostMapping("/ad")
+    public String fullAddProject2(){
         return "piece/fullAddProject";
     }
 
